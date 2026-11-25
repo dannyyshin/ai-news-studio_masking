@@ -1,0 +1,13 @@
+# Local secrets & runtime data
+.env
+data/*.db
+data/*.db-journal
+outputs/*
+!outputs/.gitkeep
+
+# OS & Python cache
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/

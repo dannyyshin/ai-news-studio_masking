@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "Write(outputs/**)",
+      "Edit(outputs/**)",
+      "Bash(ego-browser:*)",
+      "Bash(python3 .claude/skills/ai-news-collect/scripts/dedup_store.py:*)",
+      "Bash(python3 .claude/skills/news-fact-qc/scripts/validate_contract.py:*)",
+      "Bash(python3 .claude/skills/publish-confirm/scripts/verify_published_payload.py:*)",
+      "Bash(python3 .claude/hooks/guard_publish.py:*)",
+      "Bash(INSTA_PUBLISH_RUN_DIR=* ego-browser:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/guard_publish.py"
+          }
+        ]
+      }
+    ]
+  }
+}

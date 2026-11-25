@@ -1,0 +1,95 @@
+{
+  "studio": {
+    "name": "ai-news-studio",
+    "base_dir": "<PROJECT_ROOT>",
+    "db_path": "<PROJECT_ROOT>/data/studio.db"
+  },
+  "brand": {
+    "instagram_username": "your_instagram_id",
+    "tone_id": "A",
+    "tone_label": "친근하고 위트 있는 AI 큐레이터",
+    "hook_examples": [
+      "오늘 AI 업계 난리 난 이유 30초 정리",
+      "방금 뜬 AI 신기능, 내 업무엔 뭐가 달라질까?"
+    ]
+  },
+  "content": {
+    "default_format": "cardnews",
+    "formats": {
+      "cardnews": {
+        "label": "카드뉴스 (5~6장, 3:4)",
+        "min_slides": 5,
+        "max_slides": 6
+      },
+      "webtoon": {
+        "label": "1컷 웹툰 (단일 컷, 3:4)",
+        "layout": "single_panel",
+        "min_slides": 1,
+        "max_slides": 1
+      },
+      "both": {
+        "label": "카드뉴스 + 1컷 웹툰 둘 다 (6~7장, 3:4)",
+        "min_slides": 6,
+        "max_slides": 7
+      }
+    },
+    "korean_text_limits": {
+      "title_max_chars": 14,
+      "subtitle_max_chars": 24,
+      "paper_note_max_lines": 3,
+      "paper_note_line_max_chars": 14,
+      "checklist_max_items": 4,
+      "checklist_item_max_chars": 14,
+      "max_text_blocks_per_image": 5,
+      "edge_safe_margin_pct": 8
+    },
+    "layout_diversity": {
+      "layouts": ["L1", "L2", "L3", "L4", "L5", "L6"],
+      "min_distinct_layouts_cardnews": 3,
+      "forbid_adjacent_same_layout": true,
+      "avoid_previous_webtoon_layout": true
+    },
+    "caption_max_chars": 2200,
+    "hashtags_min": 5,
+    "hashtags_max": 12
+  },
+  "research": {
+    "targets": [
+      "Google (Gemini)",
+      "OpenAI (ChatGPT)",
+      "Anthropic (Claude)",
+      "xAI (Grok)"
+    ],
+    "default_max_age_hours": 72,
+    "fallback_max_age_hours": 168,
+    "dedup_days": 30
+  },
+  "gemini": {
+    "chat_title": "SNS용 웹툰 이미지 생성",
+    "chat_url": "https://gemini.google.com/app/<YOUR_CHAT_ID>",
+    "aspect_ratio": "3:4",
+    "output_format": "이미지",
+    "model": "Hydrogen"
+  },
+  "instagram": {
+    "url": "https://www.instagram.com/",
+    "expected_username": "your_instagram_id",
+    "preferred_crop": "원본",
+    "fallback_crop": "4:5",
+    "auto_share_after_gate2": true
+  },
+  "limits": {
+    "loop1_research_max": 2,
+    "loop2_qc_max": 2,
+    "loop3_image_per_cut_max": 2
+  },
+  "schedule": {
+    "timezone": "Asia/Seoul",
+    "cron": "CRON_TZ=Asia/Seoul 0 11 * * *",
+    "daily_time_kst": "11:00",
+    "mode": "scheduled_auto",
+    "default_format": "cardnews",
+    "default_slides": 5,
+    "max_posts_per_day": 1
+  }
+}
